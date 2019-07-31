@@ -1,0 +1,4 @@
+## .prettierignore
+src/dist/
+package.json
+package-lock.json

@@ -8,7 +8,7 @@ const formReducer = (state = {}, action )=> {
 		case "star":
 		return { 
 			...state, 
-			star: action.text
+			stars: action.text
 		};
 		case "licence":
 		return { 

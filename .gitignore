@@ -1,0 +1,6 @@
+/node_modules
+/dist
+/.cache
+/src/middleware/.cache
+/src/middleware/dist
+/src/middleware/data/db
