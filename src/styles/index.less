@@ -1,0 +1,63 @@
+@primary-color: rgb(63,135,198);
+@primary-text-color: #fff;
+@header-text-color: black;
+@form-text-color: gray;
+html{
+	font-family: Arial, Helvetica, sans-serif; 
+	color: @form-text-color;
+}
+h1{
+	color: @header-text-color;
+	font-weight: lighter;
+}
+.header{
+    background: @primary-color;
+    height: 10vw;
+    min-height: 4em;
+    padding: 0 5vw;
+    max-height: 6vw;
+	img{
+		
+		margin: 5vh 0;
+		width: 15vw;
+		max-width: 7em;
+	}
+}
+.footer{
+	color: @primary-text-color;
+    background: @primary-color;
+    height: 5vh;
+    padding: 5vh 0;
+	div{
+		margin: auto;
+		width: 21em;
+		font-size: .75em;
+	}
+}
+
+.wrapper{
+	width:50vw;
+	min-width:465px;
+	margin: auto;
+}
+
+form{
+	button.search_btn{
+		background-color: @primary-color;
+		padding: .75em 2em;
+		color: @primary-text-color;
+		display:block;
+		margin:auto;
+	}
+	fieldset{
+		border:none;
+		input[type=text], select{
+			display: block;
+		}
+		input[type=text]{
+			padding: .5em;
+			font-size: 1.5em;
+			width: 100%;
+		}
+	}
+}
