@@ -75,7 +75,7 @@ form{
 		border: @border-color 1px solid;
 	}
 	div.info{
-		min-width: 53vw;
+		min-width: 60%;
 		padding: 1vw;
 		position: relative;
 		h3{
@@ -92,7 +92,7 @@ form{
 	div.stars, div.license{
 		display: flex;
 		flex-wrap: wrap;
-		min-width: 8em;
+		min-width: 20%;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
@@ -101,10 +101,20 @@ form{
 			text-align: center;
 			font-weight: bolder;
 			margin: 1em;
-			font-size: 1vw;
+			font-size: 1em;
 		}
 	}
 }
 @media only screen and (max-width: 600px) {
-
+	.result{
+		flex-direction: column;
+		&>div,div.info{
+			max-width: 90vw;
+			padding: 1em;
+		}
+		div.stars, div.license{
+			display: block;
+			padding: 2em 1em;
+		}
+	}
 }

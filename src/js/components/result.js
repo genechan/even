@@ -9,7 +9,7 @@ const Result = (props) => {
 				{
 					props.fork &&
 					<div className="forked">
-						<button>Forked</button>
+						<button>forked</button>
 					</div>
 				}
 			</div>
