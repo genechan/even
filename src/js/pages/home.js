@@ -1,6 +1,6 @@
 import React from "react";
 import {Header, Footer} from "../pages";
-import {Form} from "../components";
+import {Form, SearchResults} from "../components";
 const Home = (props) =>{
 	return(
 		<div>
@@ -11,9 +11,7 @@ const Home = (props) =>{
 					</h1>
 					<Form/>
 					<hr/>
-					<p>
-						Please entry query and click SEARCH button abover, results appear here.
-					</p>
+					<SearchResults />
 				</section>
 			<Footer/>
 		</div>)

@@ -1,3 +1,5 @@
+import actions from "../actions";
+
 const formReducer = (state = {}, action )=> {
 	switch (action.type) {
 		case "text":
@@ -10,16 +12,21 @@ const formReducer = (state = {}, action )=> {
 			...state, 
 			stars: action.text
 		};
-		case "licence":
+		case "license":
 		return { 
 			...state, 
-			licence: action.text
+			license: action.text
 		};
 		case "forked":
 		return { 
 			...state, 
-			forked: action.checked
+			forked: action.forked
 		};
+		case "updateItems":
+		return{
+			...state,
+			items: [...action.items]
+		}
 		default:
 		return state
 	};

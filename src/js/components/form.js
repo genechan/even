@@ -13,8 +13,8 @@ const FormClass = (props) => {
 	const handleStarChange = (event) => {
 		props.searchStars(event.target.value);
 	}
-	const selectLicence = (event) => {
-		props.selectLicence(event.target.value);
+	const selectLicense = (event) => {
+		props.selectLicense(event.target.value);
 	}
 	const pickForked = (event) => {
 		props.pickForked(event.target.checked);
@@ -30,15 +30,15 @@ const FormClass = (props) => {
 		<form>
 			<fieldset>
 				<label htmlFor="text">Text</label>
-				<input type="text" name="text" id="text" onChange={handleTextChange}/>
+				<input type="text" name="text" id="text" value={props.text} onChange={handleTextChange}/>
 			</fieldset>
 			<fieldset>
 				<label htmlFor="stars">Stars</label>
-				<input type="text" name="starts" id="stars" onChange={handleStarChange}/>
+				<input type="text" name="starts" id="stars" value={props.stars} onChange={handleStarChange}/>
 			</fieldset>
 			<fieldset>
 				<label htmlFor="license">License</label>
-				<select name="license" id="license" defaultValue="" onChange={selectLicence}>
+				<select name="license" id="license" defaultValue="" value={props.license} onChange={selectLicense}>
 					<option value="">Select</option>
 					<option value="apache-2.0">Apache License 2.0</option>
 					<option value="bsd-3-clause">BSD 3-Clause</option>
@@ -49,9 +49,8 @@ const FormClass = (props) => {
 				</select>
 			</fieldset>
 			<fieldset>
-				
 				<label htmlFor="forked">
-					<input type="checkbox" name="forked" id="forked" onChange={pickForked}/>
+					<input type="checkbox" name="forked" id="forked" value={props.fork} onChange={pickForked}/>
 					Included Forked
 				</label>
 			</fieldset>
@@ -62,19 +61,22 @@ const FormClass = (props) => {
 	);
 }
 const createQueryString = (queryObj) => {
+	if(!queryObj.q){
+		return '';
+	}
 	const q = `q=${queryObj.q}`;
-	const licence = (queryObj.licence || queryObj.licence === null) ? `+licence:${queryObj.licence}` : ``;
+	const license = (queryObj.license || queryObj.license === null) ? `+license:${queryObj.license}` : ``;
 	const stars = queryObj.stars ? `+stars:${queryObj.stars}` :'';
 	const fork = queryObj.fork ? `+fork:only` : '+fork:false';
 
-	return q+licence+stars+fork;
+	return q+license+stars+fork;
 }
 const mapStateToProps = (state) => {
 	return {
 		text: state.formReducer.text || '',
 		stars: state.formReducer.stars,
-		licence: state.formReducer.licence,
-		forked: state.formReducer.forked
+		license: state.formReducer.license,
+		fork: state.formReducer.forked
 	};
 };
 const mapDispatchToProps = (dispatch) =>{
@@ -86,8 +88,8 @@ const mapDispatchToProps = (dispatch) =>{
 		searchStars: (text) => {
 			dispatch(Actions.searchStars(text));
 		},
-		selectLicence: (value) => {
-			dispatch(Actions.selectLicence(value));
+		selectLicense: (value) => {
+			dispatch(Actions.selectLicense(value));
 		},
 		pickForked: (value) => {
 			dispatch(Actions.pickForked(value));
@@ -99,17 +101,19 @@ const mapDispatchToProps = (dispatch) =>{
 			fork: false
 		}) => {
 			const queryParams = createQueryString(query);
-			const url = `https://api.github.com/search/repositories?${queryParams}`;
-			fetch( url )
-			.then(function(response) {
-				if (response.status >= 400) {
-					throw new Error("Bad response from server");
-				}
-				return response.json();
-			})
-			.then(function(stories) {
-				console.log(stories);
-			});
+			if(queryParams){
+				const url = `https://api.github.com/search/repositories?${queryParams}`;
+				fetch( url )
+				.then(function(response) {
+					if (response.status >= 400) {
+						throw new Error("Bad response from server");
+					}
+					return response.json();
+				})
+				.then(function({items}) {
+					dispatch(Actions.updateItems(items));
+				});
+			}
 		}
 	};
 }

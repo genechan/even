@@ -2,6 +2,7 @@
 @primary-text-color: #fff;
 @header-text-color: black;
 @form-text-color: gray;
+@border-color: black;
 html{
 	font-family: Arial, Helvetica, sans-serif; 
 	color: @form-text-color;
@@ -10,6 +11,16 @@ h1{
 	color: @header-text-color;
 	font-weight: lighter;
 }
+button,input,select{
+	outline: none;
+}
+button{
+	background-color: @primary-color;
+	padding: .75em 2em;
+	color: @primary-text-color;
+	display:block;
+	margin:auto;
+}
 .header{
     background: @primary-color;
     height: 10vw;
@@ -17,8 +28,7 @@ h1{
     padding: 0 5vw;
     max-height: 6vw;
 	img{
-		
-		margin: 5vh 0;
+		margin: 2vw 0;
 		width: 15vw;
 		max-width: 7em;
 	}
@@ -36,19 +46,12 @@ h1{
 }
 
 .wrapper{
-	width:50vw;
+	width:70vw;
 	min-width:465px;
 	margin: auto;
 }
 
 form{
-	button.search_btn{
-		background-color: @primary-color;
-		padding: .75em 2em;
-		color: @primary-text-color;
-		display:block;
-		margin:auto;
-	}
 	fieldset{
 		border:none;
 		input[type=text], select{
@@ -60,4 +63,48 @@ form{
 			width: 100%;
 		}
 	}
+}
+.title{
+	text-align: center;
+}
+
+.result{
+	margin:1em 0;
+	display: flex;
+	div{
+		border: @border-color 1px solid;
+	}
+	div.info{
+		min-width: 53vw;
+		padding: 1vw;
+		position: relative;
+		h3{
+			color:@primary-color;
+			font-weight: bold;
+		}
+		.forked{
+			position: absolute;
+			border:none;
+			top:1vw;
+			right:1vw;
+		}
+	}
+	div.stars, div.license{
+		display: flex;
+		flex-wrap: wrap;
+		min-width: 8em;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		
+		.value{
+			text-align: center;
+			font-weight: bolder;
+			margin: 1em;
+			font-size: 1vw;
+		}
+	}
+}
+@media only screen and (max-width: 600px) {
+
 }

@@ -10,21 +10,28 @@ const searchStars = (text) => {
 		text
 	};
 };
-const selectLicence = (text) => {
+const selectLicense = (text) => {
 	return {
-		type: "licence",
+		type: "license",
 		text
 	};
 };
 const pickForked = (checked) => {
 	return {
 		type: "forked",
-		checked
+		forked: checked
 	};
 };
+const updateItems = (items = []) => {
+	return {
+		type: "updateItems",
+		items
+	}
+}
 export default {
 	searchText,
 	searchStars,
-	selectLicence,
-	pickForked
+	selectLicense,
+	pickForked,
+	updateItems
 }
