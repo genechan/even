@@ -44,8 +44,6 @@ const FormClass = (props) => {
 					<option value="bsd-3-clause">BSD 3-Clause</option>
 					<option value="mit">MIT License</option>
 					<option value="mpl-2.0">Mozilla Public License 2.0</option>
-					<option value="other">Other</option>
-					<option value="null">NO LICENSE</option>
 				</select>
 			</fieldset>
 			<fieldset>
