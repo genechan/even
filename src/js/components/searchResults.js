@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Result from "./result";
 
 const SearchResultsClass = (props) => {
-	console.log(Result);
 	if (props.items.length === 0){
 		return (
 			<p>

@@ -38,7 +38,7 @@ const FormClass = (props) => {
 			</fieldset>
 			<fieldset>
 				<label htmlFor="license">License</label>
-				<select name="license" id="license" defaultValue="" value={props.license} onChange={selectLicense}>
+				<select name="license" id="license" value={props.license} onChange={selectLicense}>
 					<option value="">Select</option>
 					<option value="apache-2.0">Apache License 2.0</option>
 					<option value="bsd-3-clause">BSD 3-Clause</option>
