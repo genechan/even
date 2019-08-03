@@ -25,7 +25,8 @@ const pickForked = (checked) => {
 const updateItems = (items = []) => {
 	return {
 		type: "updateItems",
-		items
+		items,
+		hasSearch:true,
 	}
 }
 export default {

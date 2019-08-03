@@ -25,7 +25,8 @@ const formReducer = (state = {}, action )=> {
 		case "updateItems":
 		return{
 			...state,
-			items: [...action.items]
+			items: [...action.items],
+			hasSearch: action.hasSearch
 		}
 		default:
 		return state
